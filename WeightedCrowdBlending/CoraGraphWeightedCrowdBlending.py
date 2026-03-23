@@ -7,8 +7,8 @@ np.random.seed(42)
 # ─────────────────────────────────────────
 # LOAD CORA
 # ─────────────────────────────────────────
-def load_cora(cora_content_path="cora/cora.content",
-              cora_cites_path="cora/cora.cites"):
+def load_cora(cora_content_path="graphs/cora/cora.content",
+              cora_cites_path="graphs/cora/cora.cites"):
     node_ids, feature_matrix, labels = [], [], {}
     with open(cora_content_path, 'r') as f:
         for line in f:

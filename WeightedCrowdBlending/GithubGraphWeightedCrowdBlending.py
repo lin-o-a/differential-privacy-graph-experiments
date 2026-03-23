@@ -21,9 +21,9 @@ np.random.seed(42)
 # LOAD GITHUB
 # ─────────────────────────────────────────
 def load_github(
-    edges_path    = "data/GitHub/raw/musae_git_edges.csv",
-    features_path = "data/GitHub/raw/musae_git_features.json",
-    target_path   = "data/GitHub/raw/musae_git_target.csv",
+    edges_path    = "graphs/github/musae_git_edges.csv",
+    features_path = "graphs/github/musae_git_features.json",
+    target_path   = "graphs/github/musae_git_target.csv",
 ):
     print("Loading features...")
     with open(features_path, 'r') as f:

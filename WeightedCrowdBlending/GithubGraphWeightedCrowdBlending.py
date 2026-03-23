@@ -1,9 +1,9 @@
 """
-GitHub Social Network — Signal-Preserving Crowd Blending
+GitHub Social Network — Signal-Preserving (Weighed) Crowd Blending
 Manual loader (bypasses PyG 404 error on graphmining.ai).
 
 Raw files from: https://archive.ics.uci.edu/dataset/588/github+musae
-Place in:       data/GitHub/raw/
+Place in:       graphs/github/
                   ├── musae_git_edges.csv
                   ├── musae_git_features.json
                   └── musae_git_target.csv

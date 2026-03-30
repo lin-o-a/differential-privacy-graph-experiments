@@ -1,0 +1,63 @@
+How to Construct the Graph from Synthea
+
+# Nodes = patients (with features: age, condition count,
+#         medication count, encounter frequency, etc.)
+# Edges = shared provider / shared condition / 
+#         care pathway similarity
+
+STEP 1: Install Java (required to run Synthea)
+STEP 2: Download Synthea JAR file
+STEP 3: Run Synthea from terminal → it generates CSV files
+STEP 4: Load those CSV files in PyCharm with pandas
+STEP 5: Construct graph with NetworkX in PyCharm
+
+STEP 1:
+1. Go to: https://adoptium.net/
+   → Download "Temurin 17" (LTS) for Windows x64
+   → Run the .msi installer
+   → ✅ Check "Set JAVA_HOME" during install — important!
+
+2. Verify in Command Prompt (cmd.exe):
+   java -version
+   → Should show: openjdk version "17.x.x"
+   
+STEP 2:
+1. Go to: https://github.com/synthetichealth/synthea/releases
+   → Download: synthea-with-dependencies.jar
+   → Save it somewhere simple, e.g.:
+      C:\synthea\synthea-with-dependencies.jar
+	  
+STEP 3:
+1. Open Command Prompt (cmd.exe) or PowerShell
+2. Navigate to the folder:
+   cd C:\synthea
+
+3. Run with CSV export enabled:
+   java -jar synthea-with-dependencies.jar ^
+     -p 10000 ^
+     -s 42 ^
+     --exporter.csv.export=true ^
+     --exporter.fhir.export=false ^
+     Massachusetts
+	 
+STEP 4: Load CSV in PyCharm for check
+1. Install libraries:
+pip install pandas networkx matplotlib numpy
+
+2. Run code in PyCharm:
+
+import pandas as pd
+
+# Load the generated CSV files
+patients    = pd.read_csv(r'C:\synthea\output\csv\patients.csv')
+conditions  = pd.read_csv(r'C:\synthea\output\csv\conditions.csv')
+encounters  = pd.read_csv(r'C:\synthea\output\csv\encounters.csv')
+providers   = pd.read_csv(r'C:\synthea\output\csv\providers.csv')
+medications = pd.read_csv(r'C:\synthea\output\csv\medications.csv')
+
+print(f"Patients:   {len(patients)}")
+print(f"Conditions: {len(conditions)}")
+print(f"Encounters: {len(encounters)}")
+
+STEP 5 — Construct the Graph in PyCharm
+Run in PyCharm(or Jupyter) ConstructSyntheaGraph.py
